@@ -1,0 +1,15 @@
+{
+  "name": "juskidin-react-api",
+  "version": "1.0.0",
+  "description": "JusKidin React API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Lisa Reinhardt",
+  "license": "ISC",
+  "dependencies": {
+    "npm": "^6.9.0"
+  }
+}
