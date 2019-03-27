@@ -1,0 +1,11 @@
+language: node_js
+node_js: node
+services:
+- mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: 7KP5OltIoqSJFKyIxQcp4sXxwa0ifrMzuELo765Y/ALdiHdSXoEu0HotwYsCI70KxhlKtFJALBrB17YztWWweKR+ZwZFOidMzazGof7qdpU8gxJasynw07dvGUrdx9aZyHjDN8bRZW9hnWscX/3oXs1P3GmJt0a92GV03y4d0TQvqc0iYTgB758LdS4VxS4L4td+IT0aJZZEIKARNp0JUZTg8tlt2mNzuotyIYf0J0C1v6ncsV0IMlt7uaUpliCtG/ub5V22qtjr3PallTIJCPrS+03MlLGdQB4bO+Dsz+eTUS8zs98yFZQ6mI6318ZjkbBXKXC8qaVOWIQWH7B9zJXg9SyUxdXkkIUEXV9+rUtrzDh0C9fMgAXl6xyY0oz2GDa6Ld5RYQXooT8g7pOPmUTeIQMs822bgHGFJB97MaC6wq5uPSr81/v9lMryrxihjWtGGOEbchi4DcrFmtAhDthmqfWYdDcjwVtgC9mZkHnjuB2wloP4PcGw7q47hGNJmzw0l6qRgHQ63arCYpzJn4P6jQvt69XlspG0iF8+NKPix+UXY80G1A6/gs158GO2SKCpH1cKflhG6z7sBssrAuJI8af77ZX52zmlvB9J8HRNqj7xZh6TNRsMz4PRzeN2uEKSsb0lzrV46h7RX8F/4BT9YBxY+14yuoEdcL87+To=
+  app: juskidin-react-api
+  on:
+    repo: reinhal/juskidin-react-api
