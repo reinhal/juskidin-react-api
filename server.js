@@ -1,28 +1,34 @@
+'use strict';
+
+require('dotenv').config()
 const express = require('express');
-const app = express();
+const cloudinary = require('cloudinary');
+const formData = require('express-form-data');
 const cors = require('cors');
-const {CLIENT_ORIGIN, DATABASE_URL} = require('./config');
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
-const mongoose = require('mongoose');
-const passport = require('passport');
-const PORT = process.env.PORT || 8080;
+const { CLIENT_ORIGIN } = require('./config');
 
-mongoose.Promise = global.Promise;
+const app = express();
 
-app.use(
-  cors({
-      origin: CLIENT_ORIGIN
-  })
-);
-
-app.use(express.static('public'));
-app.use(express.json());
-
-app.get('/api/*', (req, res) => {
-  res.json({ok: true});
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET
 });
 
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+app.use(cors({
+  origin: CLIENT_ORIGIN
+}));
 
-module.exports = {app};
+app.use(formData.parse);
+
+app.post('/image-upload', (req, res) => {
+
+  const values = Object.values(req.files);
+  const promises = values.map(image => cloudinary.uploader.upload(image.path));
+
+  Promise
+    .all(promises)
+    .then(results => res.json(results));
+});
+
+app.listen(process.env.PORT || 8080, () => console.log('Thumbs Up!'));
