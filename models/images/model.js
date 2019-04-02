@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 
-const uploadPhotoSchema = new mongoose.Schema({
+const ImageSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
@@ -20,9 +20,13 @@ const uploadPhotoSchema = new mongoose.Schema({
     type: String
   }],
   image: {
-    type: String, 
-    required: true
+    url: {
+      type: String
+    }, 
+    id: {
+      type: String
+    }
   }
 })
 
-module.exports = mongoose.model('uploadImage', uploadPhotoSchema);
+module.exports = mongoose.model('Image', ImageSchema);
